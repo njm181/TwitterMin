@@ -37,7 +37,12 @@ public class DashboardActivity extends AppCompatActivity {
 
 
         BottomNavigationView navView = findViewById(R.id.nav_view);
-        navView.setOnNavigationItemSelectedListener();
+        navView.setOnNavigationItemSelectedListener(navListener);
+
+        Fragment fragmenthome = null;
+        fragmenthome = TweetListFragment.newInstance(Constantes.TWEET_LIST_ALL);
+
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, fragmenthome).commit();
 
 
         //vista principal
@@ -83,7 +88,9 @@ public class DashboardActivity extends AppCompatActivity {
                     //
                     break;
             }
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, selectedFragment).commit();
+            return true;
         }
-    }
+    };
 
 }
