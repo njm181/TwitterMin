@@ -52,7 +52,7 @@ public class TweetViewModel extends AndroidViewModel {
 
         favTweets = tweetRepository.getFavsTweets();
 
-        return tweets;
+        return favTweets;
     }
 
 
@@ -65,4 +65,7 @@ public class TweetViewModel extends AndroidViewModel {
 
     }
 
+    public void deleteTweet(int idTweet){
+        tweetRepository.deleteTweet(idTweet);
+    }
 }

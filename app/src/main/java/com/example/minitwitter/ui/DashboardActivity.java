@@ -34,10 +34,12 @@ public class DashboardActivity extends AppCompatActivity {
             switch (menuItem.getItemId()){
                 case R.id.navigation_home:
                     selectedFragment = TweetListFragment.newInstance(Constantes.TWEET_LIST_ALL);
+                    System.out.println("Estas en HOME");
                     fab.show();
                     break;
                 case R.id.navigation_tweets_like:
                     selectedFragment = TweetListFragment.newInstance(Constantes.TWEET_LIST_FAVS);
+                    System.out.println("Estas en FAVORITOS");
                     fab.hide();
                     break;
                 case R.id.navigation_profile:

@@ -12,6 +12,7 @@ import com.example.minitwitter.retrofit.AuthTwitterService;
 import com.example.minitwitter.retrofit.request.RequestCreateTweet;
 import com.example.minitwitter.retrofit.response.Like;
 import com.example.minitwitter.retrofit.response.Tweet;
+import com.example.minitwitter.retrofit.response.TweetDeleted;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -30,7 +31,7 @@ public class TweetRepository {
     //MutableLiveData permite setear cambios y saber que lista de tweets es la que tenemos
 
     //lista para obtener de la lista actual los tweets favoritos
-    private MutableLiveData<List<Tweet>> favTweetsList;
+    private MutableLiveData<List<Tweet>> favTweets;
     //para saber que usuario es el que estamos comprobando y saber si ese usuario es el que esta logueado
     //y por lo tanto es el que marco ese tweet como favorito
     private String username;
@@ -122,6 +123,41 @@ public class TweetRepository {
     }
 
 
+    public void deleteTweet(final int idTweet){
+        Call<TweetDeleted> call = authTwitterService.deleteTweet(idTweet);
+
+        call.enqueue(new Callback<TweetDeleted>() {
+            @Override
+            public void onResponse(Call<TweetDeleted> call, Response<TweetDeleted> response) {
+                if(response.isSuccessful()){
+                    //deberia realizar una copia de la lista de todos los tweets de allTweets excepto el que acabo de eliminar
+                    List<Tweet> listaClonada = new ArrayList<>();
+
+                    for (int i = 0; i< allTweets.getValue().size();i++){
+
+                        //si el tweet que estamos analizando ahora es distinto del tweet que acabo de eliminar, entonces debe quedarse en la lista
+                        if(allTweets.getValue().get(i).getId() != idTweet){
+                            listaClonada.add(new Tweet(allTweets.getValue().get(i)));
+                        }
+                    }
+                    //se avisa a los observadores pendientes que hay una nueva lista de tweets
+                    allTweets.setValue(listaClonada);
+                    //actualizo la lista de favoritos por que talvez estaba marcado como fav
+                    getFavsTweets();
+                }else{
+                    Toast.makeText(MyApp.getContext(), "Algo salio mal, intente de nuevo", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<TweetDeleted> call, Throwable t) {
+                Toast.makeText(MyApp.getContext(), "Error en la conexion, intente de nuevo", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+
+
     //metodo para enviar por POST un nuevo Tweet y que se refresque la lista de tweets
     public void likeTweet(final int idTweet){
 
@@ -176,8 +212,8 @@ public class TweetRepository {
     //devolver la lista de tweets favoritos
     public MutableLiveData<List<Tweet>> getFavsTweets() {
         //si es la primera vez que lo llamo, lo instancia
-        if(favTweetsList == null){
-            favTweetsList = new MutableLiveData<>();
+        if(favTweets == null){
+            favTweets = new MutableLiveData<>();
         }
 
         //1. obtener la lista de todos los tweets que tengo y recorrerla
@@ -216,10 +252,10 @@ public class TweetRepository {
 
         //comunicar a cualquier observador que este pendiente de esta lista que hay
         //un nuevo conjunto de datos
-        favTweetsList.setValue(newFavList);
+        favTweets.setValue(newFavList);
 
 
-        return favTweetsList;
+        return favTweets;
     }
 
 
