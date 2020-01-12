@@ -13,10 +13,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".ui.DashboardActivity"
+            android:name=".ui.tweets.DashboardActivity"
             android:label="@string/title_activity_dashboard" />
-        <activity android:name=".ui.SignUpActivity" />
-        <activity android:name=".ui.MainActivity">
+        <activity android:name=".ui.auth.SignUpActivity" />
+        <activity android:name=".ui.auth.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

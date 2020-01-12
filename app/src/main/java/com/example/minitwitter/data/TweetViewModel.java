@@ -1,12 +1,15 @@
 package com.example.minitwitter.data;
 
 import android.app.Application;
+import android.content.Context;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
 import com.example.minitwitter.retrofit.response.Tweet;
+import com.example.minitwitter.ui.tweets.BottomModalTweetFragment;
 
 import java.util.List;
 
@@ -68,4 +71,11 @@ public class TweetViewModel extends AndroidViewModel {
     public void deleteTweet(int idTweet){
         tweetRepository.deleteTweet(idTweet);
     }
+
+    //metodo para abrir el dialog BottomModalTweet que se encuentra dentro del mismo contexto/activity
+    public void openDialogTweetMenu(Context ctx, int idTweet){
+        BottomModalTweetFragment dialogTweet = BottomModalTweetFragment.newInstance(idTweet);
+        dialogTweet.show(((AppCompatActivity)ctx).getSupportFragmentManager(), "BottomModalTweetFragment");
+    }
+
 }

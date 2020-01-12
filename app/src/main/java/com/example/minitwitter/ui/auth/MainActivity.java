@@ -1,6 +1,4 @@
-package com.example.minitwitter.ui;
-
-import androidx.appcompat.app.AppCompatActivity;
+package com.example.minitwitter.ui.auth;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,101 +8,105 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.minitwitter.R;
 import com.example.minitwitter.common.Constantes;
 import com.example.minitwitter.common.SharedPreferencesManager;
 import com.example.minitwitter.retrofit.MiniTwitterApiService;
 import com.example.minitwitter.retrofit.MiniTwitterClient;
-import com.example.minitwitter.retrofit.request.RequestSignUp;
+import com.example.minitwitter.retrofit.request.RequestLogin;
 import com.example.minitwitter.retrofit.response.ResponseAuth;
+import com.example.minitwitter.ui.tweets.DashboardActivity;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class SignUpActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    Button btnSignUp;
-    TextView tvLogin;
-    EditText etUsername, etEmail, etPassword;
+    Button btnLogin;
+    TextView textViewGoSignUp;
+    EditText etEmail, etPassword;
     MiniTwitterClient miniTwitterClient;//para definir el acceso a los servicios de la api
     MiniTwitterApiService miniTwitterApiService;//para definir el acceso a los servicios de la api
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sign_up);
+        setContentView(R.layout.activity_main);
 
         //Ocultar toolbar
         getSupportActionBar().hide();
 
-        retrofitInt();
+        //Para la conexion a la api y usar los servicios
+        retrofitInit();
 
         findViews();
-        findEvents();
+        events();
 
 
     }
 
-    private void retrofitInt() {
-        miniTwitterClient = MiniTwitterClient.getInstance();
-        miniTwitterApiService = miniTwitterClient.getMiniTwitterApiService();
+    private void retrofitInit() {
+        miniTwitterClient = MiniTwitterClient.getInstance();//Para instanciar, y si ya estaba instanciada la devuelve
+        miniTwitterApiService = miniTwitterClient.getMiniTwitterApiService();//devuelve una instancia del servicio
     }
 
+    //Asocio los componentes a las variables
     private void findViews() {
-        btnSignUp = findViewById(R.id.btnSignUp);
-        tvLogin = findViewById(R.id.textViewGoSignUp);
-        etUsername = findViewById(R.id.editTextUsername);
+        btnLogin = findViewById(R.id.btnSignUp);
+        textViewGoSignUp = findViewById(R.id.textViewGoSignUp);
         etEmail = findViewById(R.id.editTextEmail);
         etPassword = findViewById(R.id.editTextPassword);
     }
-    private void findEvents() {
-        btnSignUp.setOnClickListener(this);
-        tvLogin.setOnClickListener(this);
+    //Eventos de los componentes
+    private void events() {
+        btnLogin.setOnClickListener(this);
+        textViewGoSignUp.setOnClickListener(this);
     }
+
 
 
     @Override
     public void onClick(View v) {
         //A este metodo llegan los clicks realizados en este Activity, que luego filtramos por id para saber a que elemento se clikeo
         int id = v.getId();
-
+        
         switch (id){
             case R.id.btnSignUp:
-                goToSignUp();
+                goToLogin();
                 break;
             case R.id.textViewGoSignUp:
-                backToLogin();
+                goToSignUp();
                 break;
         }
 
     }
 
-    private void goToSignUp() {
-        //comprobacion de que esta todo correcto
-        String username = etUsername.getText().toString();
-        String email = etEmail.getText().toString();
+    private void goToLogin() {
+        final String email = etEmail.getText().toString();
         String password = etPassword.getText().toString();
 
-        if(username.isEmpty()){
-            etUsername.setError("Usuario requerido");
-        }else if(email.isEmpty()){
-            etEmail.setError("Email es requerido");
-        }else if(password.isEmpty() || password.length()<4){
-            etPassword.setError("Password es requerido y debe tener al menos 4 caracteres");
+        if(email.isEmpty()){
+            etEmail.setError("El email es requerido");
+        }else if(password.isEmpty()){
+            etPassword.setError("La password es requerida");
         }else{
-            //si cumple con lo anterior hacemos la llamada a retrofit
-            String code = "UDEMYANDROID";//codigo para poder tener acceso a la api
-            RequestSignUp requestSignUp = new RequestSignUp(username, email, password, code);
-            Call<ResponseAuth> call = miniTwitterApiService.doSignUp(requestSignUp);//paso la request y devuelve objeto Call de tipo ResponseAuth que atrapo en call
-            //llamada asincrona al servicio
+            //creamos objeto de la peticion para enviar
+            RequestLogin requestLogin = new RequestLogin(email, password);
+
+            //la llamada
+            Call<ResponseAuth> call = miniTwitterApiService.doLogin(requestLogin);
+            //y sobre la llamada hacemos la peticion asincrona, y dentro creamos una clase anonima que es una clase Callback
+            //de tipo ResponseAuth
             call.enqueue(new Callback<ResponseAuth>() {
                 @Override
                 public void onResponse(Call<ResponseAuth> call, Response<ResponseAuth> response) {
+                    //respuesta en caso de que no haya problema de comunicacion con el servidor
+                    //Si queremos verificar que la respuesta sea de tipo 200, osea OK
                     if(response.isSuccessful()){
-                        Toast.makeText(SignUpActivity.this, "Registro exitoso, acabas de iniciar sesion", Toast.LENGTH_SHORT).show();
-                        //Si sale Ok la peticion podemos pasar al DashboardActivity con la sesion iniciada, ya que seria
-                        //Registro + Login, recibimos el token para iniciar sesion sin pasar por el Login
+                        Toast.makeText(MainActivity.this, "Sesion iniciada correctamente", Toast.LENGTH_LONG).show();
 
                         //Invocamos al SharedPreferences para obtener el token de la respuesta de la api y lo guardamos en el fichero para persistir
                         //y utilizar en futuras peticiones
@@ -116,27 +118,35 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                         SharedPreferencesManager.setSomeBooleanValue(Constantes.PREF_ACTIVE, response.body().getActive());
                         //guardamos todas las propiedades que recibimos al loguear en preferencias
 
-                        Intent intent = new Intent(SignUpActivity.this, DashboardActivity.class);
+
+                        //pasar al dashboard o menu del usuario
+                        Intent intent = new Intent(MainActivity.this, DashboardActivity.class);
                         startActivity(intent);
+                        //no permitir volver al MainActivity
+                        //Destruimos el MainActivity
                         finish();
                     }else{
-                        Toast.makeText(SignUpActivity.this, "Algo salio mal, revise los datos de registro", Toast.LENGTH_SHORT).show();
+                        //tendriamos error
+                        Toast.makeText(MainActivity.this, "Algo salio mal, revise sus datos de accesos", Toast.LENGTH_LONG).show();
                     }
                 }
 
                 @Override
                 public void onFailure(Call<ResponseAuth> call, Throwable t) {
-                    Toast.makeText(SignUpActivity.this, "Error en la conexion, intentelo de nuevo", Toast.LENGTH_LONG).show();
+                    //en caso de que falle la comunicacion con el servidor
+                    Toast.makeText(MainActivity.this, "Problemas de conexion, intentelo de nuevo", Toast.LENGTH_LONG).show();
+
                 }
             });
+
         }
+
     }
 
-    private void backToLogin() {
-        //ir a la pantalla inicial--> MainActivity
-        Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
+    private void goToSignUp() {
+        //ir a la pantalla de registro --> SignUpActivity
+        Intent intent = new Intent(MainActivity.this, SignUpActivity.class);
         startActivity(intent);
         finish();
     }
-
 }

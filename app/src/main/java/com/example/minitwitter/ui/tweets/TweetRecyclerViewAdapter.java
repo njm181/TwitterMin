@@ -1,9 +1,4 @@
-package com.example.minitwitter.ui;
-
-import androidx.fragment.app.FragmentActivity;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelProviders;
-import androidx.recyclerview.widget.RecyclerView;
+package com.example.minitwitter.ui.tweets;
 
 import android.content.Context;
 import android.graphics.Typeface;
@@ -12,6 +7,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.fragment.app.FragmentActivity;
+import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.minitwitter.R;
@@ -78,6 +77,26 @@ public class TweetRecyclerViewAdapter extends RecyclerView.Adapter<TweetRecycler
             holder.tvLikesCount.setTextColor(ctx.getResources().getColor(android.R.color.black));
             holder.tvLikesCount.setTypeface(null, Typeface.NORMAL);
 
+
+            //por defecto viene oculto
+            holder.ivShowMenu.setVisibility(View.GONE);
+
+            //solo lo mostraremos en caso del que el tweet que estamos recorriendo en ese momento el usuario que lo creo tenga el mismo
+            //username que el usuario logueados. Solo ese usuario podra eliminarlo
+            //hay que saber en que momento mostrar el ivshowMenu
+            if(holder.tweet.getUser().getUsername().equals(username)){
+                holder.ivShowMenu.setVisibility(View.VISIBLE);
+            }
+
+
+            //gestionar elemento visual showMenu, en la vista de fragment_tweet es la flchea gris del lado izq
+            holder.ivShowMenu.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    tweetViewModel.openDialogTweetMenu(ctx, holder.tweet.getId());
+                }
+            });
+
             //Cuando se hace click sobre el Like, para marcar como favorito
             holder.ivLike.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -127,6 +146,9 @@ public class TweetRecyclerViewAdapter extends RecyclerView.Adapter<TweetRecycler
         public final TextView tvUsername;
         public final TextView tvMensaje;
         public final TextView tvLikesCount;
+
+        public final ImageView ivShowMenu;
+
         public Tweet tweet;
 
         public ViewHolder(View view) {
@@ -137,6 +159,8 @@ public class TweetRecyclerViewAdapter extends RecyclerView.Adapter<TweetRecycler
             tvUsername = view.findViewById(R.id.textViewUsername);
             tvMensaje = view.findViewById(R.id.textViewMensaje);
             tvLikesCount = view.findViewById(R.id.textViewLikes);
+
+            ivShowMenu = view.findViewById(R.id.imageViewShowMenu);
 
 
         }
