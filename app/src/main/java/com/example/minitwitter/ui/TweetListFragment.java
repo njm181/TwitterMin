@@ -76,8 +76,19 @@ public class TweetListFragment extends Fragment {
             public void onRefresh() {
                 //que se ha finalizado el refrescar la lista. Activamos el que se esta refrescando
                 swipeRefreshLayout.setRefreshing(true);
-                //queremos refrescar la lista de tweets
-                loadNewData();//las siguientes veces cuando refresquemos llama a este metodo
+
+                //El fragmento esta dispuesto a aceptar la carga de dos tipos de listas diferentes que comparten el diseño
+                //dependiendo el valor que posea la constante que le otorga el usuario al seleccionar un boton de nav view
+                //muestra la lista de todos los tweets o solo de los favoritos
+                if (tweetListType == Constantes.TWEET_LIST_ALL) {
+                    //queremos refrescar la lista de tweets
+                    loadNewData();//las siguientes veces cuando refresquemos llama a este metodo
+                }else if(tweetListType == Constantes.TWEET_LIST_FAVS){
+                    loadNewFavData();
+                }
+
+
+
             }
         });
 
@@ -91,9 +102,48 @@ public class TweetListFragment extends Fragment {
         adapter = new TweetRecyclerViewAdapter(getActivity(),tweetList);
         recyclerView.setAdapter(adapter);
 
-        loadTweetData();//la primera vez se usa este metodo para obtener la lista de tweets del server, la siguiente vez llama a loadNewData()
+
+        if (tweetListType == Constantes.TWEET_LIST_ALL) {
+            loadTweetData();//la primera vez se usa este metodo para obtener la lista de tweets del server, la siguiente vez llama a loadNewData()
+        }else if(tweetListType == Constantes.TWEET_LIST_FAVS){
+            loadFavTweetData();
+        }
+
 
         return view;
+    }
+
+    //nos trae nuesvos tweets del servidor y ademas filtra los favoritos
+    private void loadNewFavData() {
+        tweetViewModel.getNewFavsTweets().observe(getActivity(), new Observer<List<Tweet>>() {
+            @Override
+            public void onChanged(List<Tweet> tweets) {
+                tweetList = tweets;//guardamos la lista de tweets que recibimos
+
+                //este metodo es llamado por wl swipe, entonces paramos el spinner
+                swipeRefreshLayout.setRefreshing(false);
+                adapter.setData(tweetList); //actualizamos la vista
+
+                //elimino este observer una vez utilizado, ya que se usa cada vez que el usuario hace swipe
+                //asi no interrumpe al observer de loadFavTweetData
+                tweetViewModel.getNewFavsTweets().removeObserver(this);
+
+
+            }
+        });
+
+    }
+
+    private void loadFavTweetData() {
+        //lista de favoritos que viene del viewModel - patron MVVM
+        tweetViewModel.getFavTweets().observe(getActivity(), new Observer<List<Tweet>>() {
+            @Override
+            public void onChanged(List<Tweet> tweets) {
+                //sobre la lista de tweets que recibi la guarda en la lista que dibuja el adapter
+                tweetList = tweets;
+                adapter.setData(tweetList);
+            }
+        });
     }
 
 

@@ -4,13 +4,17 @@ import android.widget.Toast;
 
 import androidx.lifecycle.MutableLiveData;
 
+import com.example.minitwitter.common.Constantes;
 import com.example.minitwitter.common.MyApp;
+import com.example.minitwitter.common.SharedPreferencesManager;
 import com.example.minitwitter.retrofit.AuthTwitterClient;
 import com.example.minitwitter.retrofit.AuthTwitterService;
 import com.example.minitwitter.retrofit.request.RequestCreateTweet;
+import com.example.minitwitter.retrofit.response.Like;
 import com.example.minitwitter.retrofit.response.Tweet;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import retrofit2.Call;
@@ -25,12 +29,22 @@ public class TweetRepository {
     private MutableLiveData<List<Tweet>> allTweets; //lista de datos dinamicos, que cambian.
     //MutableLiveData permite setear cambios y saber que lista de tweets es la que tenemos
 
+    //lista para obtener de la lista actual los tweets favoritos
+    private MutableLiveData<List<Tweet>> favTweetsList;
+    //para saber que usuario es el que estamos comprobando y saber si ese usuario es el que esta logueado
+    //y por lo tanto es el que marco ese tweet como favorito
+    private String username;
+    //El usuario es un dato que guardamos en el login con el fichero con sharedPreferences
+
+
     public TweetRepository() {
         //inicilizamos la conexion a retrofit
         authTwitterClient =  AuthTwitterClient.getInstance();
         authTwitterService = authTwitterClient.getAuthTwitterApiService();
         //carga todos los tweets, y si hay modificaciones un observer en el viewModel va a estar escuchando para aplicar cambios
         allTweets = getAllTweets();
+        //Aca rescatamos el username del usuario logueado y lo vamos a necesitar para recorrer la lista de tweets
+        username = SharedPreferencesManager.getSomeStringValue(Constantes.PREF_USERNAME);
     }
 
     //llenar la lista allTweets
@@ -141,6 +155,10 @@ public class TweetRepository {
                     allTweets.setValue(listaClonada);// el SetValue() comunica al observer del ViewModel y al del TweetListFragment que hay una nueva lista
                     //y automaticamente lo refresca
 
+
+                    //cuando likeamos un tweet se debe refrescar la lista de favoritos, ya que hay un favorito nuevo
+                    getFavsTweets();//para que vuelva a recorrer la lista de todos los tweets e introduzca el nuevo favorito
+
                 }else{
                     Toast.makeText(MyApp.getContext(), "Algo salio mal, intente de nuevo", Toast.LENGTH_SHORT).show();
                 }
@@ -155,5 +173,54 @@ public class TweetRepository {
 
     }
 
+    //devolver la lista de tweets favoritos
+    public MutableLiveData<List<Tweet>> getFavsTweets() {
+        //si es la primera vez que lo llamo, lo instancia
+        if(favTweetsList == null){
+            favTweetsList = new MutableLiveData<>();
+        }
 
-}
+        //1. obtener la lista de todos los tweets que tengo y recorrerla
+        //para saber cuales son los tweets likeados por el usuario logueado y cuales no
+        //los que si los voy a guardar en la lista de favoritos
+
+        List<Tweet> newFavList = new ArrayList<>();//aca guardo solo los favoritos
+
+        //recorrido de la lista de tweets
+        //para iterar sobre la lista de allTweets
+        //sobre la lista completa de tweets voy a obtener con el getValue un objeto de tipo List<Tweet>
+        //y con el iterator obtengo el iterador que permite recorrrer esa lista
+        Iterator itTweets = allTweets.getValue().iterator();
+
+        //mientras tengamos elementos en la lista de tweets
+        while (itTweets.hasNext()){
+            Tweet current = (Tweet) itTweets.next(); //obtengo el tweet actual
+            //ese tweet tiene una lista de usuarios que le dieron like
+            //hay que hacer otro iterator de los likes
+            Iterator itLikes = current.getLikes().iterator();
+
+            //por defecto no encontramos al usuario logueado en esa lista de likes
+            boolean encontrado = false;
+
+            //recorro la lista de likes
+            while (itLikes.hasNext() && !encontrado){
+                Like likeActual = (Like)itLikes.next(); //like actual
+                if(likeActual.getUsername().equals(username)){
+                    encontrado = true;
+                    newFavList.add(current);
+                }
+
+            }
+
+        }
+
+        //comunicar a cualquier observador que este pendiente de esta lista que hay
+        //un nuevo conjunto de datos
+        favTweetsList.setValue(newFavList);
+
+
+        return favTweetsList;
+    }
+
+
+    }

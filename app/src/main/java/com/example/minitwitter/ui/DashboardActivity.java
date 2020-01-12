@@ -25,6 +25,37 @@ public class DashboardActivity extends AppCompatActivity {
     private FloatingActionButton fab;
     private ImageView ivAvatar;
 
+
+    private BottomNavigationView.OnNavigationItemSelectedListener navListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+            Fragment selectedFragment = null;
+
+            switch (menuItem.getItemId()){
+                case R.id.navigation_home:
+                    selectedFragment = TweetListFragment.newInstance(Constantes.TWEET_LIST_ALL);
+                    fab.show();
+                    break;
+                case R.id.navigation_tweets_like:
+                    selectedFragment = TweetListFragment.newInstance(Constantes.TWEET_LIST_FAVS);
+                    fab.hide();
+                    break;
+                case R.id.navigation_profile:
+                    //
+                    fab.hide();
+                    break;
+            }
+            if(selectedFragment != null){
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.fragmentContainer, selectedFragment)
+                        .commit();
+                return true; //aplicar cambio
+            }
+
+            return false;
+        }
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,12 +68,11 @@ public class DashboardActivity extends AppCompatActivity {
 
 
         BottomNavigationView navView = findViewById(R.id.nav_view);
-        navView.setOnNavigationItemSelectedListener(navListener);
+        navView.setOnNavigationItemSelectedListener(navListener);;
 
-        Fragment fragmenthome = null;
-        fragmenthome = TweetListFragment.newInstance(Constantes.TWEET_LIST_ALL);
-
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, fragmenthome).commit();
+        getSupportFragmentManager().beginTransaction()
+                .add(R.id.fragmentContainer, TweetListFragment.newInstance(Constantes.TWEET_LIST_ALL))
+                .commit();
 
 
         //vista principal
@@ -72,25 +102,5 @@ public class DashboardActivity extends AppCompatActivity {
 
     }
 
-    private BottomNavigationView.OnNavigationItemSelectedListener navListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-            Fragment selectedFragment = null;
-
-            switch (menuItem.getItemId()){
-                case R.id.navigation_home:
-                    selectedFragment = TweetListFragment.newInstance(Constantes.TWEET_LIST_ALL);
-                    break;
-                case R.id.navigation_tweets_like:
-                    selectedFragment = TweetListFragment.newInstance(Constantes.TWEET_LIST_FAVS);
-                    break;
-                case R.id.navigation_profile:
-                    //
-                    break;
-            }
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, selectedFragment).commit();
-            return true;
-        }
-    };
 
 }

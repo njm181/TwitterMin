@@ -15,6 +15,7 @@ public class TweetViewModel extends AndroidViewModel {
     //acceso al webservice(api) osea al repository
     private TweetRepository tweetRepository;
     private LiveData<List<Tweet>> tweets;
+    private LiveData<List<Tweet>> favTweets;
 
     public TweetViewModel(@NonNull Application application) {
         super(application);
@@ -45,4 +46,23 @@ public class TweetViewModel extends AndroidViewModel {
     public void likeTweet(int idTweet){
        tweetRepository.likeTweet(idTweet);
     }
+
+    //obtenemos del repository solo los tweets favoritos que el usuario marco
+    public LiveData<List<Tweet>> getFavTweets(){
+
+        favTweets = tweetRepository.getFavsTweets();
+
+        return tweets;
+    }
+
+
+    //metodo que sea invocado cuando quiera refrescar del servidor la nueva lista de tweets
+    public LiveData<List<Tweet>> getNewFavsTweets(){
+        //obtener la lista de tweets nuevos que tenga
+        getNewTweets();
+
+        return getFavTweets();
+
+    }
+
 }
