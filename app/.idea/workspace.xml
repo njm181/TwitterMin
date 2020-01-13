@@ -7,27 +7,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="66bf8f1e-fa19-46fc-a396-5a1752d69626" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_karumi_dexter_6_0_1_aar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/AndroidManifest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/minitwitter/common/Constantes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/minitwitter/common/Constantes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/minitwitter/data/TweetViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/minitwitter/data/TweetViewModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/minitwitter/ui/DashboardActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/minitwitter/ui/tweets/DashboardActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/minitwitter/ui/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/minitwitter/ui/auth/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/minitwitter/ui/NuevoTweetDialogFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/minitwitter/ui/tweets/NuevoTweetDialogFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/minitwitter/ui/SignUpActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/minitwitter/ui/auth/SignUpActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/minitwitter/ui/TweetListFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/minitwitter/ui/tweets/TweetListFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/minitwitter/ui/TweetRecyclerViewAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/minitwitter/ui/tweets/TweetRecyclerViewAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/res/layout/activity_dashboard.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/layout/activity_dashboard.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/layout/activity_main.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/res/layout/activity_sign_up.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/layout/activity_sign_up.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/res/layout/fragment_tweet.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/layout/fragment_tweet.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/res/layout/fragment_tweet_list.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/layout/fragment_tweet_list.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/res/navigation/mobile_navigation.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/navigation/mobile_navigation.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/minitwitter/data/ProfileViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/minitwitter/data/ProfileViewModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/minitwitter/retrofit/AuthTwitterService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/minitwitter/retrofit/AuthTwitterService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/minitwitter/ui/profile/ProfileFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/minitwitter/ui/profile/ProfileFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/minitwitter/ui/tweets/DashboardActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/minitwitter/ui/tweets/DashboardActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/layout/profile_fragment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/layout/profile_fragment.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -51,34 +42,71 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/res/layout/profile_fragment.xml">
-          <provider selected="true" editor-type-id="text-editor">
+          <provider editor-type-id="text-editor">
             <state relative-caret-position="220">
               <caret line="10" column="49" selection-start-line="10" selection-start-column="49" selection-end-line="10" selection-end-column="49" />
-              <folding>
-                <element signature="e#1474#1494#0" expanded="true" />
-                <element signature="e#1937#1960#0" expanded="true" />
-              </folding>
             </state>
           </provider>
-          <provider editor-type-id="android-designer2" />
+          <provider selected="true" editor-type-id="android-designer2" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/example/minitwitter/ui/profile/ProfileFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="500">
-              <caret line="50" column="11" lean-forward="true" selection-start-line="50" selection-start-column="11" selection-end-line="50" selection-end-column="11" />
+            <state relative-caret-position="874">
+              <caret line="145" column="25" selection-start-line="145" selection-start-column="25" selection-end-line="145" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/example/minitwitter/ui/tweets/DashboardActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="280">
+              <caret line="113" column="42" lean-forward="true" selection-start-line="113" selection-start-column="42" selection-end-line="113" selection-end-column="42" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/example/minitwitter/ui/tweets/DashboardActivity.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/example/minitwitter/common/Constantes.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="594">
-              <caret line="42" column="61" selection-start-line="42" selection-start-column="61" selection-end-line="42" selection-end-column="61" />
+            <state relative-caret-position="572">
+              <caret line="26" column="52" selection-start-line="26" selection-start-column="52" selection-end-line="26" selection-end-column="52" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/build.gradle">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="494">
+              <caret line="53" column="44" selection-start-line="53" selection-start-column="44" selection-end-line="53" selection-end-column="44" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/example/minitwitter/data/ProfileRepository.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="654">
+              <caret line="108" column="134" selection-start-line="108" selection-start-column="134" selection-end-line="108" selection-end-column="134" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/example/minitwitter/data/ProfileViewModel.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="616">
+              <caret line="28" column="43" selection-start-line="28" selection-start-column="43" selection-end-line="28" selection-end-column="43" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1052#1053#0" expanded="true" />
+                <element signature="e#1069#1070#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -102,11 +130,9 @@
         <option value="$PROJECT_DIR$/src/main/java/com/example/minitwitter/ui/ui/home/HomeViewModel.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/minitwitter/ui/ui/dashboard/DashboardFragment.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/minitwitter/ui/DashboardActivity.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/example/minitwitter/retrofit/AuthTwitterService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/minitwitter/data/TweetRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/minitwitter/ui/BottomModalTweetViewModel.java" />
         <option value="$PROJECT_DIR$/src/main/res/layout/bottom_modal_tweet_fragment.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/example/minitwitter/common/Constantes.java" />
         <option value="$PROJECT_DIR$/src/main/res/menu/navigation_view_dialog_tweet.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/minitwitter/data/TweetViewModel.java" />
         <option value="$PROJECT_DIR$/src/main/res/layout/fragment_tweet.xml" />
@@ -114,14 +140,19 @@
         <option value="$PROJECT_DIR$/src/main/java/com/example/minitwitter/ui/TweetRecyclerViewAdapter.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/minitwitter/ui/auth/MainActivity.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/minitwitter/ui/auth/SignUpActivity.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/example/minitwitter/data/ProfileViewModel.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/example/minitwitter/ui/profile/ProfileFragment.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/example/minitwitter/ui/tweets/DashboardActivity.java" />
         <option value="$PROJECT_DIR$/src/main/res/layout/profile_fragment.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/example/minitwitter/retrofit/AuthTwitterService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/example/minitwitter/data/ProfileRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/example/minitwitter/data/ProfileViewModel.java" />
+        <option value="$PROJECT_DIR$/build.gradle" />
+        <option value="$PROJECT_DIR$/src/main/java/com/example/minitwitter/ui/profile/ProfileFragment.java" />
+        <option value="$PROJECT_DIR$/src/main/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/example/minitwitter/common/Constantes.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/example/minitwitter/ui/tweets/DashboardActivity.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds">
     <option name="x" value="1912" />
     <option name="y" value="-8" />
     <option name="width" value="1936" />
@@ -133,8 +164,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -195,7 +224,29 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="minitwitter" type="462c0819:PsiDirectoryNode" />
-              <item name="ui" type="462c0819:PsiDirectoryNode" />
+              <item name="retrofit" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MiniTwitter" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MiniTwitter" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="minitwitter" type="462c0819:PsiDirectoryNode" />
+              <item name="retrofit" type="462c0819:PsiDirectoryNode" />
+              <item name="request" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MiniTwitter" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MiniTwitter" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="minitwitter" type="462c0819:PsiDirectoryNode" />
+              <item name="retrofit" type="462c0819:PsiDirectoryNode" />
+              <item name="response" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="MiniTwitter" type="b2602c69:ProjectViewProjectNode" />
@@ -206,7 +257,6 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="minitwitter" type="462c0819:PsiDirectoryNode" />
               <item name="ui" type="462c0819:PsiDirectoryNode" />
-              <item name="auth" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="MiniTwitter" type="b2602c69:ProjectViewProjectNode" />
@@ -240,7 +290,9 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
       <pane id="AndroidView" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -250,8 +302,12 @@
     <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.example.minitwitter.data" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\nicol\Desktop\app\MiniTwitter\app\src\main\java\com\example\minitwitter\retrofit\response" />
+      <recent name="C:\Users\nicol\Desktop\app\MiniTwitter\app\src\main\java\com\example\minitwitter\retrofit\request" />
       <recent name="C:\Users\nicol\Desktop\app\MiniTwitter\app\src\main\java\com\example\minitwitter\ui" />
     </key>
   </component>
@@ -343,10 +399,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="1912" y="-8" width="1936" height="1056" extended-state="0" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
-      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.16791044" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.16791044" />
       <window_info id="Structure" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info id="Build Variants" order="4" side_tool="true" />
@@ -367,7 +423,7 @@
       <window_info anchor="right" id="Capture Analysis" order="1" />
       <window_info anchor="right" id="Gradle" order="2" />
       <window_info anchor="right" id="Theme Preview" order="3" />
-      <window_info active="true" anchor="right" id="Preview" order="4" visible="true" weight="0.39605543" />
+      <window_info anchor="right" id="Preview" order="4" weight="0.39605543" />
       <window_info anchor="right" id="Palette&#9;" order="5" />
     </layout>
   </component>
@@ -379,7 +435,6 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/com/example/minitwitter/ui/ui/home/HomeViewModel.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/example/minitwitter/ui/ui/dashboard/DashboardFragment.java" />
     <entry file="file://$PROJECT_DIR$/src/main/res/navigation/mobile_navigation.xml">
-      <provider editor-type-id="nav-designer" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
           <caret line="15" column="13" lean-forward="true" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
@@ -388,51 +443,32 @@
           </folding>
         </state>
       </provider>
+      <provider editor-type-id="nav-designer" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/res/menu/bottom_nav_menu.xml">
-      <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="176">
           <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
         </state>
       </provider>
+      <provider editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/res/layout/fragment_tweet_list.xml">
-      <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor" />
+      <provider editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/res/layout/activity_dashboard.xml">
-      <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="550">
           <caret line="85" column="45" lean-forward="true" selection-start-line="85" selection-start-column="45" selection-end-line="85" selection-end-column="45" />
         </state>
       </provider>
+      <provider editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/example/minitwitter/retrofit/response/TweetDeleted.java">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/minitwitter/retrofit/AuthTwitterService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="29" column="55" selection-start-line="29" selection-start-column="55" selection-end-line="29" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/minitwitter/ui/BottomModalTweetViewModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="2" column="14" selection-start-line="2" selection-start-column="14" selection-end-line="2" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/minitwitter/common/Constantes.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="506">
-          <caret line="23" column="43" selection-start-line="23" selection-start-column="31" selection-end-line="23" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/minitwitter/ui/BottomModalTweetViewModel.java" />
     <entry file="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/c7eb9cd3508ac3959447c14fd76c9fb9/material-1.0.0/jars/classes.jar!/com/google/android/material/bottomsheet/BottomSheetDialogFragment.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="110">
@@ -525,6 +561,9 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/minitwitter/retrofit/response/ResponseUserProfile.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/example/minitwitter/data/TweetRepository.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="636">
@@ -538,38 +577,85 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/minitwitter/data/ProfileViewModel.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/minitwitter/retrofit/request/RequestUserProfile.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="4" column="43" selection-start-line="4" selection-start-column="43" selection-end-line="4" selection-end-column="43" />
+        <state relative-caret-position="445">
+          <caret line="35" column="75" selection-start-line="35" selection-start-column="75" selection-end-line="35" selection-end-column="75" />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/layout/profile_fragment.xml">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="10" column="49" selection-start-line="10" selection-start-column="49" selection-end-line="10" selection-end-column="49" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/minitwitter/retrofit/response/ResponseUploadPhoto.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/minitwitter/retrofit/AuthTwitterService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="765">
+          <caret line="53" column="16" lean-forward="true" selection-start-line="53" selection-start-column="16" selection-end-line="53" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/minitwitter/data/ProfileRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="654">
+          <caret line="108" column="134" selection-start-line="108" selection-start-column="134" selection-end-line="108" selection-end-column="134" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/minitwitter/data/ProfileViewModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="616">
+          <caret line="28" column="43" selection-start-line="28" selection-start-column="43" selection-end-line="28" selection-end-column="43" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1052#1053#0" expanded="true" />
+            <element signature="e#1069#1070#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="494">
+          <caret line="53" column="44" selection-start-line="53" selection-start-column="44" selection-end-line="53" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="5" column="75" selection-start-line="5" selection-start-column="75" selection-end-line="5" selection-end-column="75" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-manifest" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/example/minitwitter/ui/profile/ProfileFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="500">
-          <caret line="50" column="11" lean-forward="true" selection-start-line="50" selection-start-column="11" selection-end-line="50" selection-end-column="11" />
+        <state relative-caret-position="874">
+          <caret line="145" column="25" selection-start-line="145" selection-start-column="25" selection-end-line="145" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/minitwitter/common/Constantes.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="572">
+          <caret line="26" column="52" selection-start-line="26" selection-start-column="52" selection-end-line="26" selection-end-column="52" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/example/minitwitter/ui/tweets/DashboardActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="594">
-          <caret line="42" column="61" selection-start-line="42" selection-start-column="61" selection-end-line="42" selection-end-column="61" />
+        <state relative-caret-position="280">
+          <caret line="113" column="42" lean-forward="true" selection-start-line="113" selection-start-column="42" selection-end-line="113" selection-end-column="42" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/res/layout/profile_fragment.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="10" column="49" selection-start-line="10" selection-start-column="49" selection-end-line="10" selection-end-column="49" />
-          <folding>
-            <element signature="e#1474#1494#0" expanded="true" />
-            <element signature="e#1937#1960#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
     </entry>
   </component>
 </project>
